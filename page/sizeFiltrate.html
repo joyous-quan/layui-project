@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>规格筛选</title>
+	<meta charset="utf-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <link rel="stylesheet" href="../layui/css/layui.css" media="all">
+    <script src="../layui/layui.js"></script>
+    <script src="../js/jquery-3.2.1.min.js"></script>
+    <script src="../js/cookie.js"></script>
+    <style type="text/css" media="screen">
+    	.layui-form-item{margin:0;}
+    	.layui-table tr td,.layui-table tr th {border:none; text-align:left;}
+    	.layui-table tr td:first-child{padding-left:50px;}
+    </style>
+</head>
+<body>
+ 
+<form class="layui-form" >
+	<table class="layui-table" lay-filter="test">
+	  <thead>
+	    <tr>
+	      <th style="padding-left:50px;height:40px"><input type="checkbox" lay-skin="primary" id="allChoose" lay-filter="allChoose" checked="" title="全选(默认)"></th>
+	      
+	    </tr>
+	  </thead>
+	  <tbody >
+
+	  	<tr>
+	  		<td width="200"><input checked="" type="checkbox" lay-skin="primary" lay-filter="itemChoose" title="vip" id="spec_2"></td>
+	  	</tr>
+	  	<tr>
+	  		<td width="200"><input checked="" type="checkbox" lay-skin="primary" lay-filter="itemChoose" title="vvip" id="spec_3"></td>
+	  	</tr>
+	  	<tr>
+	  		<td><input id="spec_4" checked="" type="checkbox" lay-skin="primary" lay-filter="itemChoose" title="vvvip会员"></td>
+	  	</tr>
+	  	<tr>
+	  		<td><input id="site" checked="" lay-filter="itemChoose" type="checkbox" lay-skin="primary" title="地址"></td>
+	  	</tr>
+	  </tbody>
+	</table>
+	<div style="height:50px"></div>
+	<div class="layui-input-block" style="margin-left:110px">
+	    <a href="javascript:;" class="layui-btn sure_btn" >确定</a>
+	    <a href="javascript:;" class="layui-btn layui-btn-danger cancel_btn" >取消</a>
+	 
+	</div>
+</form>
+<script>
+layui.use(['form', 'table','jquery', 'layedit', 'laydate'], function(){
+	var form = layui.form
+	,table = layui.table
+	,$ = layui.jquery
+
+
+    //全选
+	form.on('checkbox(allChoose)', function(data){
+		var child = $(data.elem).parents('table').find('tbody input[type="checkbox"]');
+		child.each(function(index, item){
+			item.checked = data.elem.checked;
+		});
+		form.render('checkbox');
+	});
+
+	//通过判断是否全部选中来确定全选按钮是否选中
+	form.on("checkbox(itemChoose)",function(data){
+		var child = $(data.elem).parents('table').find('tbody input[type="checkbox"]');
+		var childChecked = $(data.elem).parents('table').find('tbody input[type="checkbox"]:checked')
+		if(childChecked.length == child.length){
+			$(data.elem).parents('table').find('thead input#allChoose').get(0).checked = true;
+		}else{
+			$(data.elem).parents('table').find('thead input#allChoose').get(0).checked = false;
+		}
+		form.render('checkbox');
+	})
+	
+	//console.log(document.cookie);
+	$('.sure_btn').click(function(){
+	    if($('#spec_2').is(':checked')){
+			setCookie('spec_2','checked')
+		}else{removeCookie('spec_2')}	
+
+		if($('#spec_3').is(':checked')){
+			setCookie('spec_3','checked')
+		}else{removeCookie('spec_3')}
+
+		if($('#spec_4').is(':checked')){
+			setCookie('spec_4','checked')
+		}else{removeCookie('spec_4')}
+		
+		parent.location.reload();
+		closeWindow()
+
+	})
+
+
+	$('.cancel_btn').click(function(){
+		closeWindow()
+	})
+	function closeWindow(){//关闭弹窗
+	    var index = parent.layer.getFrameIndex(window.name);
+	    parent.layer.close(index);
+	}
+
+});
+</script>
+</body>
+</html>

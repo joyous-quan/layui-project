@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>编辑产品价格</title>
+	<meta charset="utf-8">
+	<meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <link rel="stylesheet" href="../layui/css/layui.css" media="all">
+    <script src="../layui/layui.js"></script>
+    <script src="../js/cookie.js"></script>
+    <style type="text/css" media="screen">
+    	.layui-form-label{width:120px;}
+    	.layui-form-item {margin-bottom: 10px;}
+    	#brand,#casNo {cursor:default;}
+    </style>
+</head>
+<body>
+	<div class="layui-form">
+		<div style="height:10px"></div>
+		<div class="layui-form-item">
+		    <label class="layui-form-label">产品名称</label>
+		    <div class="layui-input-inline">
+		      <input type="text" name="productName" id="productName" lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input" readonly="value">
+		    </div>
+		</div>
+		<div class="layui-form-item">
+		    <label class="layui-form-label">货号</label>
+		    <div class="layui-input-inline">
+		      <input type="text" name="productCode" id="productCode" lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input" readonly="value">
+		    </div>
+		</div>
+		<div class="layui-form-item">
+		    <label class="layui-form-label">标准价格</label>
+		    <div class="layui-input-inline">
+		      <input type="text" name="spec_1" id="spec_1" lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
+		    </div>
+		</div>
+		<div class="layui-form-item">
+		    <label class="layui-form-label">vip会员价</label>
+		    <div class="layui-input-inline">
+		      <input type="text" name="spec_2" id="spec_2" lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
+		    </div>
+		</div>
+		<div class="layui-form-item">
+		    <label class="layui-form-label">vvip会员价</label>
+		    <div class="layui-input-inline">
+		      <input type="text" name="spec_3" id="spec_3" lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
+		    </div>
+		</div>
+		<div class="layui-form-item">
+		    <label class="layui-form-label">vvip会员价</label>
+		    <div class="layui-input-inline">
+		      <input type="text" name="spec_4" id="spec_4" lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
+		    </div>
+		</div>
+		<div style="height:20px"></div>
+		<div class="layui-input-block" style="margin-left:150px">
+		    <a href="javascript:;" class="layui-btn sure_btn" >确定</a>
+		    <a href="javascript:;" class="layui-btn layui-btn-danger cancel_btn" >取消</a>
+		 
+		</div>
+	</div>
+
+
+<script type="text/javascript">
+	layui.use([ 'form', 'table', 'element','jquery'], function(){
+		var form = layui.form //
+		,table = layui.table //表格
+		,element = layui.element //元素操作
+		,$ = layui.jquery;
+
+		//console.log(getCookie('editStr'));
+		var editObj = JSON.parse(getCookie('editStr'));
+		//console.log(editObj);
+		//console.log(editObj.casNo)
+		$('#productName').val(editObj.productName); 
+		$('#productCode').val(editObj.productCode); 
+		$('#spec_1').val(editObj.spec_1);
+		$('#spec_2').val(editObj.spec_2);
+		$('#spec_3').val(editObj.spec_3);
+		$('#spec_4').val(editObj.spec_4);
+
+		$('.sure_btn').click(function(){
+			var editObj = JSON.parse(getCookie('editStr'))
+			//console.log(editObj);
+			console.log($('#spec_1').val())	
+			document.cookie = "spec_1=" +$('#spec_1').val();
+			editObj.spec_2 = $('#spec_2').val();
+			editObj.spec_3 = $('#spec_3').val();
+			editObj.spec_4 = $('#spec_4').val();
+			//console.log(JSON.parse(getCookie('editStr')).spec_1)
+			//console.log(editObj.spec_1)
+			//parent.location.reload();
+			closeWindow()
+		})
+
+
+		$('.cancel_btn').click(function(){
+			closeWindow()
+		})
+		function closeWindow(){//关闭弹窗
+		    var index = parent.layer.getFrameIndex(window.name);
+		    parent.layer.close(index);
+		}
+
+	})
+</script>
+
+</body>
+</html>

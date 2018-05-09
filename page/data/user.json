@@ -1,0 +1,43 @@
+{
+  "code": 0,
+  "msg": "",
+  "count": 10,
+  "data":[
+    {
+        "id" : "1",
+        "userName" : "admin",
+        "password" : "admin",
+        "jurisdiction" : "超级管理员"
+    },{
+        "id" : "2",
+        "userName" : "user1",
+        "password" : "user1",
+        "jurisdiction" : "普通管理员"
+    }
+    ,{
+        "id" : "3",
+        "userName" : "user2",
+        "password" : "user2",
+        "jurisdiction" : "普通管理员"
+    },{
+        "id" : "4",
+        "userName" : "user3",
+        "password" : "user3",
+        "jurisdiction" : "普通管理员"
+    },{
+        "id" : "5",
+        "userName" : "user4",
+        "password" : "user4",
+        "jurisdiction" : "普通管理员"
+    },{
+        "id" : "6",
+        "userName" : "user3",
+        "password" : "user3",
+        "jurisdiction" : "普通管理员"
+    },{
+        "id" : "7",
+        "userName" : "user4",
+        "password" : "user4",
+        "jurisdiction" : "普通管理员"
+    }
+]}

@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>后台管理系统</title>
+	<meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
+	<link rel="stylesheet" href="./css/index.css">
+    <script type="text/javascript" src="./js/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="./layui/layui.js" charset="utf-8"></script>
+    <script type="text/javascript" src="./js/cookie.js"></script>
+    <script type="text/javascript" src="./js/index.js"></script>
+
+</head>
+<body>
+    <!-- 头部开始 #a02775  -->
+    <div class="header">
+        <div class="logo"><a href="./index.html">xx 系统管理</a></div>  
+        <div class="left_open">
+            <i title="展开左侧栏" class="iconfont layui-icon">&#xe65a;</i>
+        </div>   
+        <ul class="layui-nav right" lay-filter="">
+            <li class="user">
+                <img src="./images/user.jpg" alt="" height="40px" width="40px">
+            </li>
+            <li class="layui-nav-item">
+                <a href="javascript:;" id="username" style="margin-right:20px"></a>
+            </li>
+        </ul>
+    </div>
+    <!-- 头部结束 -->
+    <!-- 中部开始 -->
+    <!-- 左菜单开始 -->
+    <div class="left-nav">
+        <div id="side-nav">
+            <ul id="nav">  
+                <li>
+                    <a _href="./page/productList.html">
+                        <i class="layui-icon">&#xe609;</i>
+                        <cite>产品列表</cite>
+                    </a>
+                </li>
+                <li>
+                    <a _href="./page/report.html">
+                        <i class="layui-icon">&#xe62c;</i>
+                        <cite>数据报表</cite>
+                    </a>
+                </li>
+                <!-- <li>
+                    <a _href="javascript:;">
+                        <i class="layui-icon">&#xe620;</i>
+                        <cite>系统日志</cite>
+                    </a>
+                    <ul class="sub-menu menu-sub">
+                        <li>
+                            <a _href="log.html">
+                                <i class="layui-icon">&#xe602;</i>
+                                <cite>系统日志一</cite>
+                            </a>
+                        </li>
+                        <li>
+                            <a _href="./page/log_2.html">
+                                <i class="layui-icon">&#xe602;</i>
+                                <cite>系统日志二</cite>
+                            </a>
+                        </li>
+                    </ul>
+                </li> -->
+                <li>
+                    <a _href="./page/users.html">
+                        <i class="layui-icon">&#xe612;</i>
+                        <cite>用户列表</cite>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!-- 左菜单结束 -->
+    <!-- 右主体开始 -->
+    <div class="page-content">
+        <div class="layui-tab tab" lay-filter="my_tab" lay-allowclose="false">
+            <ul class="layui-tab-title" lay-allowclose="false">
+                <li class="layui-home">后台首页<span></span></li>
+            </ul>
+            <div class="layui-tab-content">
+                <div class="layui-tab-item layui-show">
+                    <iframe src="./page/backstage.html" frameborder="0" scrolling="yes" class="my_iframe"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 右主体结束 -->
+    <!-- 中部结束 -->
+
+    <!--菜单点击当前显示-->
+<script type="text/javascript">
+    $(function(){
+
+        // $('.menu-sub li').eq(0).addClass("active");
+        $('.menu-sub li').each(function(){
+          $(this).click(function(){
+            $(this).addClass("active").siblings().removeClass("active");
+           })
+        });
+        $('.layui-home').css({'overflow':'hidden','height':'36px'});
+        $('.layui-home').find('span').css({
+            'display':'block',
+            'width' : '30px'
+        })
+        //获取用户
+        var name = getCookie("username");
+        var pass = getCookie("password");
+        var values = "userName=" + name + ";  passwords=" + pass;
+        //获取用户名
+        $("#username").text(name);
+        if(name == null){
+          $("#username").html('请登陆');
+          $("#username").attr("href","login.html");
+          $("#username").parent().find('dl dd a').html('请登录');
+        }
+        // 从cookie中获取值的方法
+        //console.log(document.cookie)
+        function getCookie(name) {
+            var arr,reg=new RegExp("(^| )"+name+"=([^;]*)(;|$)");
+            if(arr=document.cookie.match(reg)){
+                return unescape(arr[2]);
+            }else{
+                return null; 
+            }
+        }
+    })
+</script>
+
+
+</body>
+</html>

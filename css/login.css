@@ -1,0 +1,92 @@
+@charset "utf-8";
+@import url(../layui/css/layui.css);
+*{
+	margin: 0px;
+	padding: 0px;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 12px;
+}
+a{
+	text-decoration: none;
+}
+html{
+	width: 100%;
+	height: 100%;
+}
+body{
+	width: 100%;
+    min-height: 100%;
+    -moz-box-sizing: border-box; /*Firefox3.5+*/
+    -webkit-box-sizing: border-box; /*Safari3.2+*/
+    -o-box-sizing: border-box; /*Opera9.6*/
+    -ms-box-sizing: border-box; /*IE8*/
+    box-sizing: border-box; /*W3C标准*/
+    
+}
+
+.login-bg{ 
+    overflow: hidden;
+    position: relative;
+    background:url(../images/timg.jpg) no-repeat;
+    background-size: cover;
+}
+.login{
+    height: 350px;
+    width: 360px;
+    padding: 40px;
+    position:absolute;
+    left:50%;top:50%;
+    margin-top:-175px;
+    margin-left:-180px;
+    border-radius: 4px;
+    -moz-box-sizing: border-box; /*Firefox3.5+*/
+    -webkit-box-sizing: border-box; /*Safari3.2+*/
+    -o-box-sizing: border-box; /*Opera9.6*/
+    -ms-box-sizing: border-box; /*IE8*/
+    box-sizing: border-box; /*W3C标准*/
+}
+
+.login .message {
+    margin: 10px 0;
+    position: relative;
+    color: #462640;
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom:40px;
+}
+.login input{
+    border: none;
+    vertical-align: middle;
+    border-radius: 3px;
+    height: 50px;
+    padding: 0px 16px;
+    margin-bottom:20px;
+    font-size: 14px;
+    color: #fff;
+    outline:none;
+    width:100%;
+    background: rgba(46, 23, 60, 0.3);
+    -moz-box-sizing: border-box; /*Firefox3.5+*/
+    -webkit-box-sizing: border-box; /*Safari3.2+*/
+    -o-box-sizing: border-box; /*Opera9.6*/
+    -ms-box-sizing: border-box; /*IE8*/
+    box-sizing: border-box; /*W3C标准*/
+}
+.login input[type=submit]{
+    display: inline-block;
+    vertical-align: middle;
+    padding: 12px 24px;
+    margin: 0px;
+    font-size: 18px;
+    line-height: 24px;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+    background: rgba(46, 23, 60, 0.3);
+    border-radius: 3px;
+    border: none;
+    -webkit-appearance: none;
+    outline:none;
+    width:100%;
+}
